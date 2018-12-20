@@ -1,3 +1,6 @@
+use std::rc::Rc;
+use std::cell::RefCell;
+
 pub mod two_sum;
 pub mod add_two_numbers;
 pub mod longest_substring_without_repeating_characters;
@@ -10,6 +13,8 @@ pub mod merge_two_sorted_lists;
 pub mod remove_element;
 pub mod implement_strstr;
 pub mod sqrtx;
+pub mod all_possible_full_binary_trees;
+pub mod counting_bits;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
@@ -39,6 +44,26 @@ macro_rules! linkedlist {
 
             let _ = ref_head; // 避免 `unused_assignments`
             head.next
+        }
+    }
+}
+
+
+// Definition for a binary tree node.
+#[derive(Debug, PartialEq, Eq)]
+pub struct TreeNode {
+    pub val: i32,
+    pub left: Option<Rc<RefCell<TreeNode>>>,
+    pub right: Option<Rc<RefCell<TreeNode>>>,
+}
+
+impl TreeNode {
+    #[inline]
+    pub fn new(val: i32) -> Self {
+        TreeNode {
+            val,
+            left: None,
+            right: None,
         }
     }
 }
