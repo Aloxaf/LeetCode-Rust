@@ -19,6 +19,7 @@ pub mod longest_common_prefix;
 pub mod search_insert_position;
 pub mod string_to_integer_atoi;
 pub mod evaluate_reverse_polish_notation;
+pub mod valid_sudoku;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
