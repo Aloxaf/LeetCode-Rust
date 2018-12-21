@@ -1,10 +1,9 @@
 use crate::ListNode;
 
-// 未提交, LeetCode 那边的 edition 出了问题
 impl Solution {
     pub fn add_two_numbers(
-        l1: &mut Option<Box<ListNode>>,
-        l2: &mut Option<Box<ListNode>>,
+        l1: Option<Box<ListNode>>,
+        l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
         let mut head = Box::new(ListNode::new(0));
         let mut ref_head = &mut head;
@@ -30,6 +29,10 @@ impl Solution {
             l2 = l2.map(|n|n.next.as_ref()).unwrap_or(None);
         }
 
+        if carry > 0 {
+            ref_head.next = Some(Box::new(ListNode::new(1)));
+        }
+
         head.next
     }
 }
@@ -43,8 +46,10 @@ mod test {
 
     #[test]
     fn test() {
-        let mut l1 = linkedlist![2, 4, 3];
-        let mut l2 = linkedlist![5, 6, 4];
-        assert_eq!(Solution::add_two_numbers(&mut l1, &mut l2), linkedlist![7, 0, 8]);
+        let l1 = linkedlist![2, 4, 3];
+        let l2 = linkedlist![5, 6, 4];
+        assert_eq!(Solution::add_two_numbers(l1, l2), linkedlist![7, 0, 8]);
+
+        assert_eq!(Solution::add_two_numbers(linkedlist![5], linkedlist![5]), linkedlist![0, 1]);
     }
 }

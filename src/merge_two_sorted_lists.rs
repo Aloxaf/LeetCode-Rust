@@ -1,10 +1,9 @@
 use crate::ListNode;
 
-// 未提交, LeetCode 那边的 edition 出了问题
 impl Solution {
     pub fn merge_two_lists(
-        l1: &mut Option<Box<ListNode>>,
-        l2: &mut Option<Box<ListNode>>,
+        l1: Option<Box<ListNode>>,
+        l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
         let mut head = Box::new(ListNode::new(0));
         let mut ref_head = &mut head;
