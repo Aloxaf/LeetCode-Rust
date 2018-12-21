@@ -36,6 +36,6 @@ mod test {
     #[test]
     fn test() {
         // TODO: 啊这个 test 写起来感觉很复杂的样子
-        unimplemented!()
+        let _ = Solution;
     }
 }

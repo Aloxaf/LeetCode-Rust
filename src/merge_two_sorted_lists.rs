@@ -37,8 +37,8 @@ mod test {
 
     #[test]
     fn test() {
-        let mut l1 = linkedlist![1, 2, 4];
-        let mut l2 = linkedlist![1, 3, 4];
-        assert_eq!(Solution::merge_two_lists(&mut l1, &mut l2), linkedlist![1, 1, 2, 3, 4, 4]);
+        let l1 = linkedlist![1, 2, 4];
+        let l2 = linkedlist![1, 3, 4];
+        assert_eq!(Solution::merge_two_lists(l1, l2), linkedlist![1, 1, 2, 3, 4, 4]);
     }
 }
