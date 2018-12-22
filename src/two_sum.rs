@@ -6,7 +6,7 @@ impl Solution {
         let mut ret = vec![];
         for i in 0..nums.len() {
             if let Some(&idx) = map.get(&(target - nums[i])) {
-                ret.extend([idx as i32, i as i32].iter());
+                ret.extend(vec![idx as i32, i as i32]);
                 break;
             } else {
                 map.insert(nums[i], i);

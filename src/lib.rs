@@ -20,6 +20,9 @@ pub mod search_insert_position;
 pub mod string_to_integer_atoi;
 pub mod evaluate_reverse_polish_notation;
 pub mod valid_sudoku;
+pub mod count_and_say;
+pub mod longest_palindromic_substring;
+pub mod length_of_last_word;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
