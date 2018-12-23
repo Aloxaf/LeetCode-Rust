@@ -23,6 +23,7 @@ pub mod valid_sudoku;
 pub mod count_and_say;
 pub mod longest_palindromic_substring;
 pub mod length_of_last_word;
+pub mod integer_to_roman;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
