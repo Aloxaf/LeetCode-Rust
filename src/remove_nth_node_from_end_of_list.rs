@@ -14,12 +14,9 @@ impl Solution {
             slow = &slow.as_ref().unwrap().next;
             fast = &fast.as_ref().unwrap().next;
         }
-        unsafe {
-            let a = &mut *(slow as *const Option<Box<ListNode>> as *mut Option<Box<ListNode>>);
-            let b = &mut *(&slow.as_ref().unwrap().next as *const Option<Box<ListNode>>
-                as *mut Option<Box<ListNode>>);
-            std::mem::swap(a, b);
-        }
+        let a = slow as *const _ as *mut Option<Box<ListNode>>;
+        let b = &slow.as_ref().unwrap().next as *const _ as *mut Option<Box<ListNode>>;
+        unsafe { std::ptr::swap(a, b); }
         dummy.unwrap().next
     }
 }
