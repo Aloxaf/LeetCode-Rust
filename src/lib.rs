@@ -24,6 +24,10 @@ pub mod count_and_say;
 pub mod longest_palindromic_substring;
 pub mod length_of_last_word;
 pub mod integer_to_roman;
+pub mod group_anagrams;
+pub mod maximum_subarray;
+pub mod rotate_image;
+pub mod remove_nth_node_from_end_of_list;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
@@ -41,6 +45,9 @@ impl ListNode {
 
 #[macro_export]
 macro_rules! linkedlist {
+    () => {
+        None
+    };
     ($($e:expr), *) => {
         {
             let mut head = Box::new(ListNode::new(0));
