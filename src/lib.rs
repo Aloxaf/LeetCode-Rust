@@ -28,6 +28,13 @@ pub mod group_anagrams;
 pub mod maximum_subarray;
 pub mod rotate_image;
 pub mod remove_nth_node_from_end_of_list;
+pub mod climbing_stairs;
+pub mod power_of_two;
+pub mod plus_one;
+pub mod add_binary;
+pub mod valid_palindrome;
+pub mod jewels_and_stones;
+pub mod to_lower_case;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
