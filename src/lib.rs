@@ -35,6 +35,12 @@ pub mod add_binary;
 pub mod valid_palindrome;
 pub mod jewels_and_stones;
 pub mod to_lower_case;
+pub mod unique_morse_code_words;
+pub mod maximum_depth_of_binary_tree;
+pub mod merge_sorted_array;
+pub mod pascals_triangle;
+pub mod count_primes;
+pub mod isomorphic_strings;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
