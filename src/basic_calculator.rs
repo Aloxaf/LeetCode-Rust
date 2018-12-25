@@ -1,72 +1,51 @@
-#[derive(Debug, PartialOrd, PartialEq)]
-enum Sym {
-    Num(i32),
-    Op(u8),
-}
-
 impl Solution {
     #[inline]
-    fn calc(stack: Vec<Sym>) -> i32 {
-        // println!("{:?}", &stack);
-        let mut nums = vec![];
-        for sym in stack {
-            match sym {
-                Sym::Num(num) => nums.push(num),
-                Sym::Op(op) => {
-                    let (n2, n1) = (nums.pop().unwrap(), nums.pop().unwrap());
-                    match op {
-                        b'+' => nums.push(n1 + n2),
-                        _ => nums.push(n1 - n2),
-                    }
-                }
+    fn calc(nums: Vec<i32>, ops: Vec<u8>) -> i32 {
+        let mut ret = nums[0];
+        for (&op, &num) in ops.iter().zip(&nums[1..]) {
+            match op {
+                b'+' => ret += num,
+                _ => ret -= num,
             }
         }
-        nums.pop().unwrap()
+        ret
     }
 
-    // 本来也想试试单趟搞定, 然而写出来一堆bug, 怒而逆波兰
     pub fn calculate(s: String) -> i32 {
-        let s = s.as_bytes();
-        let mut stack = vec![];
-        let mut output = vec![];
-        let mut i = 0;
-        while i < s.len() {
-            let c = s[i];
+        let mut positive = true;
+        let mut nums = vec![];
+        let mut ops = vec![];
+        let mut num = (false, 0);
+        let mut prev = b'+';
+        let mut sign = vec![];
+        for c in s.bytes().filter(|c| !c.is_ascii_whitespace()) {
             match c {
-                b'0'..=b'9' => {
-                    let mut num = (c - b'0') as i32;
-                    while s.get(i + 1).unwrap_or(&b' ').is_ascii_digit() {
-                        i += 1;
-                        num = num * 10 + (s[i] - b'0') as i32;
+                b'0'..=b'9' => num = (true, num.1 * 10 + (c - b'0') as i32),
+                _ => {
+                    if num.0 {
+                        nums.push(num.1);
+                        num = (false, 0);
                     }
-                    output.push(Sym::Num(num));
-                },
-                b'+' | b'-' => {
-                    while let Some(op) = stack.pop() {
-                        if op == Sym::Op(b'(') {
-                            stack.push(op);
-                            break;
-                        }
-                        output.push(op);
-                    }
-                    stack.push(Sym::Op(c))
-                },
-                b'(' => stack.push(Sym::Op(c)),
-                b')' => {
-                    while let Some(op) = stack.pop() {
-                        if op == Sym::Op(b'(') {
-                            break;
-                        }
-                        output.push(op);
+                    match c {
+                        b'+' if positive => ops.push(b'+'),
+                        b'-' if positive => ops.push(b'-'),
+                        b'+' if !positive => ops.push(b'-'),
+                        b'-' if !positive => ops.push(b'+'),
+                        b'(' => {
+                            sign.push(positive);
+                            positive = prev == b'+';
+                        },
+                        b')' => positive = sign.pop().unwrap(),
+                        _ => unreachable!(),
                     }
                 }
-                _ => (),
             }
-            i += 1;
+            prev = *ops.last().unwrap_or(&b'+');
         }
-        stack.reverse();
-        output.append(&mut stack);
-        Solution::calc(output)
+        if num.0 {
+            nums.push(num.1);
+        }
+        Solution::calc(nums, ops)
     }
 }
 
@@ -78,8 +57,10 @@ mod test {
 
     #[test]
     fn test() {
+        assert_eq!(Solution::calculate("1-(1)+8".to_owned()), 8);
         assert_eq!(Solution::calculate("1 + 1".to_owned()), 2);
         assert_eq!(Solution::calculate(" 2-1 + 2 ".to_owned()), 3);
+        assert_eq!(Solution::calculate("1-(1-1-(1-1)) ".to_owned()), 1);
         assert_eq!(Solution::calculate("(1+(4+5+2)-3)+(6+8)".to_owned()), 23);
         assert_eq!(Solution::calculate("1 - 1 ".to_owned()), 0);
         assert_eq!(Solution::calculate("1 - (5) ".to_owned()), -4);
