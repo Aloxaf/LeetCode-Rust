@@ -16,10 +16,10 @@ pub struct Solution;
 #[cfg(test)]
 mod test {
     use super::Solution;
+    use crate::btree;
 
     #[test]
     fn test() {
-        // TODO: 啊我需要一个二叉树初始化宏
-        let _ = Solution;
+        assert_eq!(Solution::max_depth(btree![3, 9, 20, null, null, 15, 7]), 3);
     }
 }

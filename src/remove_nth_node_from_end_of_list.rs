@@ -26,7 +26,7 @@ pub struct Solution;
 #[cfg(test)]
 mod test {
     use super::Solution;
-    use crate::{linkedlist, ListNode};
+    use crate::linkedlist;
 
     #[test]
     fn test() {

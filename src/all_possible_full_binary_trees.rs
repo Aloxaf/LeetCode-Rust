@@ -32,10 +32,22 @@ pub struct Solution;
 #[cfg(test)]
 mod test {
     use super::Solution;
+    use crate::btree;
 
     #[test]
     fn test() {
-        // TODO: 啊这个 test 写起来感觉很复杂的样子
-        let _ = Solution;
+        let mut ret = Solution::all_possible_fbt(7);
+        ret.sort_unstable();
+
+        let mut ans = vec![
+            btree![0, 0, 0, null, null, 0, 0, null, null, 0, 0],
+            btree![0, 0, 0, null, null, 0, 0, 0, 0],
+            btree![0, 0, 0, 0, 0, 0, 0],
+            btree![0, 0, 0, 0, 0, null, null, 0, 0],
+            btree![0, 0, 0, 0, 0, null, null, null, null, 0, 0],
+        ];
+        ans.sort_unstable();
+
+        assert_eq!(ret, ans);
     }
 }

@@ -32,7 +32,7 @@ pub struct Solution;
 
 #[cfg(test)]
 mod test {
-    use crate::{ListNode, linkedlist};
+    use crate::linkedlist;
     use super::Solution;
 
     #[test]
