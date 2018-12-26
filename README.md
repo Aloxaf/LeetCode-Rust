@@ -12,3 +12,15 @@ Rust 运行速度是真 TM 快
 <s>是刷题的不二之选</s>
 
 <s>以上不包括使用了非标准库的链表、树等数据结构的题目</s>
+
+## 常用命令
+
+### 测试
+```
+cargo test --lib add_binary -- --nocapture
+```
+
+### Benchmark
+```
+cargo bench --lib length_of_last_word --features bench -- --nocapture
+```

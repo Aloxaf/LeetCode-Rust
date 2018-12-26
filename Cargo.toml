@@ -5,3 +5,6 @@ authors = ["Aloxaf <bailong104@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+
+[features]
+bench = []
