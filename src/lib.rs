@@ -46,6 +46,9 @@ pub mod isomorphic_strings;
 pub mod basic_calculator;
 pub mod largest_number;
 pub mod non_decreasing_array;
+pub mod generate_parentheses;
+pub mod excel_sheet_column_number;
+pub mod rotate_array;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
@@ -79,7 +82,7 @@ macro_rules! linkedlist {
             let _ = ref_head; // 避免 `unused_assignments`
             head.next
         }
-    }
+    };
 }
 
 
@@ -100,4 +103,9 @@ impl TreeNode {
             right: None,
         }
     }
+}
+
+#[macro_export]
+macro_rules! vec_string {
+    ($($e:expr), *) => {vec![$($e.to_owned()), *]};
 }
