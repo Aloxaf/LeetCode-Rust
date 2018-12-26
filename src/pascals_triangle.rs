@@ -36,6 +36,6 @@ mod test {
         );
 
         assert_eq!(Solution::generate(1), vec![vec![1],]);
-        assert_eq!(Solution::generate(0), vec![vec![],]);
+        assert_eq!(Solution::generate(0), Vec::<Vec<i32>>::new());
     }
 }

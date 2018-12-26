@@ -17,7 +17,7 @@ mod test {
     #[test]
     fn test() {
         assert_eq!(Solution::is_power_of_two(1), true);
-        assert_eq!(Solution::is_power_of_two(6), true);
+        assert_eq!(Solution::is_power_of_two(8), true);
         assert_eq!(Solution::is_power_of_two(218), false);
     }
 }
