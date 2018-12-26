@@ -44,6 +44,8 @@ pub mod pascals_triangle;
 pub mod count_primes;
 pub mod isomorphic_strings;
 pub mod basic_calculator;
+pub mod largest_number;
+pub mod non_decreasing_array;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
