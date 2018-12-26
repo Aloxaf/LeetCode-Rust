@@ -16,15 +16,17 @@ impl Solution {
                     let n = c - b'0';
                     ret = ret.0.overflowing_mul(10);
                     if ret.1 { break; }
-                    ret = ret.0.overflowing_add(n as i32);
+                    ret = ret.0.overflowing_add(i32::from(n));
                     if ret.1 { break; }
 
                 }
 
                 if ret.1 {
                     if positive { std::i32::MAX } else { std::i32::MIN }
+                } else if positive {
+                    ret.0
                 } else {
-                    if positive { ret.0 } else { -ret.0 }
+                    -ret.0
                 }
             },
             _ => 0

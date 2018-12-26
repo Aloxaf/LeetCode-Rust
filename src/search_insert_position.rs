@@ -1,7 +1,7 @@
 impl Solution {
     pub fn search_insert(nums: Vec<i32>, target: i32) -> i32 {
         // 仿佛在刷 CodeWars (
-        nums.iter().enumerate().filter(|(_, n)| **n >= target).next().unwrap_or((nums.len(), &0)).0 as i32
+        nums.iter().enumerate().find(|(_, n)| **n >= target).unwrap_or((nums.len(), &0)).0 as i32
     }
 }
 

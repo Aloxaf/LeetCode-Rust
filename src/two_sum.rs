@@ -4,12 +4,12 @@ impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut map = HashMap::new();
         let mut ret = vec![];
-        for i in 0..nums.len() {
-            if let Some(&idx) = map.get(&(target - nums[i])) {
+        for (i, n) in nums.iter().enumerate() {
+            if let Some(&idx) = map.get(&(target - n)) {
                 ret.extend(vec![idx as i32, i as i32]);
                 break;
             } else {
-                map.insert(nums[i], i);
+                map.insert(n, i);
             }
         }
         ret

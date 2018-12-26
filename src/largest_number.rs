@@ -9,7 +9,7 @@ impl Solution {
         for (i, j) in iter1.zip(iter2) {
             match i.cmp(&j) {
                 Ordering::Equal => continue,
-                cmp @ _ => return cmp,
+                cmp => return cmp,
             }
         }
         Ordering::Equal
@@ -18,9 +18,9 @@ impl Solution {
     pub fn largest_number(nums: Vec<i32>) -> String {
         let mut nums = nums.iter().map(|n| n.to_string()).collect::<Vec<_>>();
         nums.sort_unstable_by(|a, b| Solution::wow_cmp(b, a));
-        match nums.join("").trim_start_matches("0") {
+        match nums.join("").trim_start_matches('0') {
             "" => "0".to_owned(),
-            s @ _ => s.to_owned(),
+            s => s.to_owned(),
         }
     }
 }

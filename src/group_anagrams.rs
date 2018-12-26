@@ -8,7 +8,7 @@ impl Solution {
                     hash[(b - b'a') as usize] += 1u8;
                     hash
                 }))
-                .or_insert(vec![])
+                .or_insert_with(Vec::new)
                 .push(s);
                 map
             })

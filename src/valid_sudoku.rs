@@ -22,8 +22,8 @@ impl Solution {
             }
         }
         // 九宫格
-        for i in vec![0, 3, 6] {
-            for j in vec![0, 3, 6] {
+        for i in &[0usize, 3, 6] {
+            for j in &[0usize, 3, 6] {
                 let mut map = [false; 9];
                 for a in 0..3 {
                     for b in 0..3 {

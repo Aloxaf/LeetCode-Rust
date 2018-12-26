@@ -15,7 +15,7 @@ impl Solution {
             return 0;
         }
         for i in 0..=(haystack.len().saturating_sub(needle.len())) {
-            if &haystack[i..i+needle.len()] == &needle {
+            if haystack[i..i+needle.len()] == needle {
                 return i as i32;
             }
         }

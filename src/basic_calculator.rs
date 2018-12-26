@@ -20,7 +20,7 @@ impl Solution {
         let mut sign = vec![];
         for c in s.bytes().filter(|c| !c.is_ascii_whitespace()) {
             match c {
-                b'0'..=b'9' => num = (true, num.1 * 10 + (c - b'0') as i32),
+                b'0'..=b'9' => num = (true, num.1 * 10 + i32::from(c - b'0')),
                 _ => {
                     if num.0 {
                         nums.push(num.1);

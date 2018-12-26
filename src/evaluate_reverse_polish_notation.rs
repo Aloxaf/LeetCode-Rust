@@ -1,7 +1,7 @@
 impl Solution {
     pub fn eval_rpn(tokens: Vec<String>) -> i32 {
         let mut nums = vec![];
-        for ref s in tokens {
+        for s in &tokens {
             let s = s as &str;
             match s {
                 "+" | "-" | "*" | "/" => {

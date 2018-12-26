@@ -1,6 +1,6 @@
 impl Solution {
     pub fn my_sqrt(x: i32) -> i32 {
-        let x = x as f64;
+        let x = f64::from(x);
         let (mut a1, mut a2) = (1.0f64, 0.0f64);
 
         while (a1 - a2).abs() >= 0.1 {

@@ -11,7 +11,7 @@ impl Solution {
             left  -= 1;
             right += 1;
             if bytes[left] != bytes[right] {
-                return (&s[left+1..=right-1], right - left - 1);
+                return (&s[left+1..right], right - left - 1);
             }
         }
         (&s[left..=right], right - left + 1)
