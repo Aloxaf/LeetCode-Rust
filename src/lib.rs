@@ -49,6 +49,7 @@ pub mod non_decreasing_array;
 pub mod generate_parentheses;
 pub mod excel_sheet_column_number;
 pub mod rotate_array;
+pub mod design_linked_list;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]
@@ -106,7 +107,7 @@ impl TreeNode {
 }
 
 // 想了想, 其实不要这个宏也行
-// 用 vec_string 全转成字符串就可以了...
+// 用 stringfiy! 全转成字符串就可以了...
 #[macro_export]
 macro_rules! null_to_none {
     (@start $($e:tt), *) => {

@@ -1,3 +1,8 @@
 #!/usr/bin/zsh
+
+# ./test add_binary
+# or
+# ./test src/add_binary.rs
+
 lib_name=${1#*/}
 cargo test --lib ${lib_name%.*} -- --nocapture
