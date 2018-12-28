@@ -1,11 +1,11 @@
 [package]
-name = "leetcode"
+name = "useful_macros"
 version = "0.1.0"
 authors = ["Aloxaf <bailong104@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-useful_macros = { path = "useful_macros" }
+serde_json = "1.0"
 
-[features]
-bench = []
+[lib]
+proc-macro = true

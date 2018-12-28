@@ -52,18 +52,16 @@ impl Trie {
 
 #[cfg(test)]
 mod tests {
+    use crate::leetcode_test;
     use super::Trie;
 
     #[test]
     fn test() {
-        let mut obj = Trie::new();
-        obj.insert("apple".to_owned());
-        assert_eq!(obj.search("apple".to_owned()), true);
-        assert_eq!(obj.search("app".to_owned()), false);
-        assert_eq!(obj.search("appled".to_owned()), false);
-        assert_eq!(obj.starts_with("app".to_owned()), true);
-        obj.insert("app".to_owned());
-        assert_eq!(obj.search("app".to_owned()), true);
+        leetcode_test!(
+            ["Trie","insert","search","search","startsWith","insert","search"]
+            [[],["apple"],["apple"],["app"],["app"],["app"],["app"]]
+            [null,null,true,false,true,null,true]
+        );
     }
 }
 
@@ -72,17 +70,16 @@ mod bench {
     extern crate test;
     use super::Trie;
     use self::test::Bencher;
+    use crate::leetcode_test;
 
     #[bench]
     fn bench(b: &mut Bencher) {
         b.iter(|| {
-            let mut obj = Trie::new();
-            obj.insert("appleappleappleapple".to_owned());
-            obj.search("appleappleappleapple".to_owned());
-            obj.search("appleapple".to_owned());
-            obj.starts_with("appleapple".to_owned());
-            obj.insert("appleapple".to_owned());
-            obj.search("appleapple".to_owned());
+            leetcode_test!(
+                ["Trie","insert","search","search","startsWith","insert","search"]
+                [[],["apple"],["apple"],["app"],["app"],["app"],["app"]]
+                [null,null,true,false,true,null,true]
+            );
         });
     }
 }

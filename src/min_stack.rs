@@ -58,17 +58,15 @@ impl MinStack {
 
 #[cfg(test)]
 mod tests {
+    use crate::leetcode_test;
     use super::MinStack;
 
     #[test]
     fn test() {
-        let mut obj = MinStack::new();
-        obj.push(-2);
-        obj.push(0);
-        obj.push(-3);
-        assert_eq!(obj.get_min(), -3);
-        obj.pop();
-        assert_eq!(obj.top(), 0);
-        assert_eq!(obj.get_min(), -2);
+        leetcode_test!(
+            ["MinStack","push","push","push","getMin","pop","top","getMin"]
+            [[],[-2],[0],[-3],[],[],[],[]]
+            [null,null,null,null,-3,null,0,-2]
+        );
     }
 }

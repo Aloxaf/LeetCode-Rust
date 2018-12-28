@@ -1,7 +1,9 @@
 #![cfg_attr(feature = "bench", feature(test))]
+#![feature(proc_macro_hygiene)]
 
 use std::rc::Rc;
 use std::cell::RefCell;
+pub use useful_macros::leetcode_test;
 
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Debug)]

@@ -121,8 +121,8 @@ impl MyLinkedList {
 
 #[cfg(test)]
 mod tests {
+    use crate::leetcode_test;
     use super::MyLinkedList;
-
     /// ```python
     /// import re
     ///
@@ -136,16 +136,10 @@ mod tests {
     /// ```
     #[test]
     fn test1() {
-        let obj = MyLinkedList::new();
-        obj.add_at_head(1);
-        obj.add_at_tail(3);
-        obj.add_at_index(1, 2);
-        assert_eq!(obj.get(0), 1);
-        assert_eq!(obj.get(1), 2);
-        assert_eq!(obj.get(2), 3);
-        obj.delete_at_index(1);
-        assert_eq!(obj.get(0), 1);
-        assert_eq!(obj.get(1), 3);
-        obj.delete_at_index(3);
+        leetcode_test!(
+            ["MyLinkedList","addAtHead","addAtTail","addAtIndex","get","deleteAtIndex","get"]
+            [[],[1],[3],[1,2],[1],[1],[1]]
+            [null,null,null,null,2,null,3]
+        );
     }
 }
