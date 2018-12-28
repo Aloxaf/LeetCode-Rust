@@ -173,3 +173,8 @@ pub mod rotate_array;
 pub mod design_linked_list;
 pub mod remove_duplicates_from_sorted_list;
 pub mod excel_sheet_column_title;
+pub mod implement_trie_prefix_tree;
+pub mod same_tree;
+pub mod symmetric_tree;
+pub mod powx_n;
+pub mod min_stack;

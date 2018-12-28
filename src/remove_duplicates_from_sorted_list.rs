@@ -4,6 +4,8 @@ impl Solution {
     pub fn delete_duplicates(mut head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         let mut p = &mut head;
         while let Some(now) = p {
+            // 这里修改 next 指针后直接 continue 会编译错误, 编译器似乎认为对 p 的可变借用还存在?
+            // 总之要避免 continue ...
             while let Some(next) = now.next.as_mut() {
                 if now.val != next.val {
                     break;
