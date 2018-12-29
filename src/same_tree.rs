@@ -45,9 +45,10 @@ mod tests {
     }
 }
 
-#[cfg(all(feature = "bench", test))]
+#[cfg(test)]
 mod bench {
     extern crate test;
+    use crate::btree;
     use super::Solution;
     use self::test::Bencher;
 

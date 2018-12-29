@@ -21,7 +21,7 @@ mod test {
     }
 }
 
-#[cfg(all(feature = "bench", test))]
+#[cfg(test)]
 mod bench {
     extern crate test;
     use super::Solution;

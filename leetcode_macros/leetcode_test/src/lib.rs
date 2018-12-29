@@ -73,6 +73,22 @@ impl ToArgs for Value {
 // 突然闲蛋疼
 // 突然想练习一下过程宏
 // Rust 赛高!
+/// Generate code from three lists
+///
+/// # Example
+/// ```rust
+/// leetcode_test!(
+///     ["Trie", "insert", "search"]
+///     [[], ["apple"], ["apple"]]
+///     [null, null, true]
+/// )
+/// ```
+/// this will be expaned to
+/// ``` rust
+/// let mut obj = Trie::new();
+/// obj.insert("apple".to_owned());
+/// assert_eq!(obj.search("apple".to_owned()), true);
+/// ```
 #[proc_macro]
 pub fn leetcode_test(input: TokenStream) -> TokenStream {
     let input = input.to_string();
@@ -99,4 +115,9 @@ pub fn leetcode_test(input: TokenStream) -> TokenStream {
 
     // format!("r#\"{}\"#", code).parse().unwrap()
     code.parse().unwrap()
+}
+
+#[proc_macro]
+pub fn leetcode_test_debug(input: TokenStream) -> TokenStream {
+    format!(r##"r#"{}"#"##, leetcode_test(input)).parse().unwrap()
 }

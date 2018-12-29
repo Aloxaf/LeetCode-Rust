@@ -5,4 +5,4 @@
 # ./bench src/length_of_last_word.rs
 
 lib_name=${1#*/}
-cargo bench --lib ${lib_name%.*} --features bench -- --nocapture
+cargo bench --lib ${lib_name%.*} -- --nocapture

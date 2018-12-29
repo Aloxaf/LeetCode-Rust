@@ -22,5 +22,5 @@ cargo test --lib add_binary -- --nocapture
 
 ### Benchmark
 ```
-cargo bench --lib length_of_last_word --features bench -- --nocapture
+cargo bench --lib length_of_last_word -- --nocapture
 ```

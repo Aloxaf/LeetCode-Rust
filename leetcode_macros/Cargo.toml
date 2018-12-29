@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "leetcode_macros",
+    "leetcode_test",
+]
