@@ -1,3 +1,4 @@
+/// 基本思路是去掉括号, 然后传给 calc 计算
 impl Solution {
     #[inline]
     fn calc(nums: Vec<i32>, ops: Vec<u8>) -> i32 {
@@ -12,12 +13,12 @@ impl Solution {
     }
 
     pub fn calculate(s: String) -> i32 {
-        let mut positive = true;
+        let mut positive = true;      // 记录当前外层括号前的符号
         let mut nums = vec![];
         let mut ops = vec![];
-        let mut num = (false, 0);
-        let mut prev = b'+';
-        let mut sign = vec![];
+        let mut num = (false, 0);  // 数字的临时变量, 其中 .0 用于记录是否正在解析数字
+        let mut prev = b'+';            // 记录最后一个运算符
+        let mut sign = vec![];    // 记录括号前的符号
         for c in s.bytes().filter(|c| !c.is_ascii_whitespace()) {
             match c {
                 b'0'..=b'9' => num = (true, num.1 * 10 + i32::from(c - b'0')),
@@ -27,15 +28,17 @@ impl Solution {
                         num = (false, 0);
                     }
                     match c {
+                        // 根据情况选择是否变号
                         b'+' if positive => ops.push(b'+'),
                         b'-' if positive => ops.push(b'-'),
                         b'+' if !positive => ops.push(b'-'),
                         b'-' if !positive => ops.push(b'+'),
                         b'(' => {
+                            // 遇到左括号, 将当前外层符号压栈, 并更新下一层的符号
                             sign.push(positive);
                             positive = prev == b'+';
                         },
-                        b')' => positive = sign.pop().unwrap(),
+                        b')' => positive = sign.pop().unwrap(), // 遇到右括号, 恢复外层的符号
                         _ => unreachable!(),
                     }
                 }

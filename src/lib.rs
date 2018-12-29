@@ -61,3 +61,5 @@ pub mod add_and_search_word_data_structure_design;
 pub mod implement_queue_using_stacks;
 pub mod implement_stack_using_queues;
 pub mod design_hashmap;
+pub mod basic_calculator_ii;
+pub mod reverse_string;
