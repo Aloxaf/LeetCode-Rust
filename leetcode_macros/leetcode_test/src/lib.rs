@@ -107,7 +107,7 @@ pub fn leetcode_test(input: TokenStream) -> TokenStream {
     for i in 1..funcs.as_array().unwrap().len() {
         let mut stmt = format!("obj.{}({})", funcs[i].as_str().unwrap(), args[i].to_args());
         if !rets[i].is_null() {
-            stmt = format!("assert_eq!({}, {})", stmt, rets[i].to_string());
+            stmt = format!(r##"assert_eq!({}, {}, r#"{}"#)"##, stmt, rets[i].to_string(), stmt);
         }
         stmt.push_str(";\n");
         code.push_str(&stmt);
