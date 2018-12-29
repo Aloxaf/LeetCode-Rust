@@ -1,7 +1,7 @@
 #![feature(test)]
 #![feature(proc_macro_hygiene)]
 
-pub use leetcode_macros::{ListNode, TreeNode, leetcode_test, linkedlist, btree, vec_string};
+pub use leetcode_prelude::*;
 
 pub mod two_sum;
 pub mod add_two_numbers;

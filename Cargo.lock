@@ -7,19 +7,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "leetcode"
 version = "0.1.0"
 dependencies = [
- "leetcode_macros 0.1.0",
+ "leetcode_prelude 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
-name = "leetcode_macros"
-version = "0.1.0"
+name = "leetcode_prelude"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
- "leetcode_test 0.1.0",
+ "leetcode_test 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
 name = "leetcode_test"
-version = "0.1.0"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "serde_json 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -46,6 +48,8 @@ dependencies = [
 
 [metadata]
 "checksum itoa 0.4.3 (registry+https://github.com/rust-lang/crates.io-index)" = "1306f3464951f30e30d12373d31c79fbd52d236e5e896fd92f96ec7babbbe60b"
+"checksum leetcode_prelude 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "bfce0a0f9175a8142497c0eed01c10d1cc12f3da5eb873731a0921a60342b881"
+"checksum leetcode_test 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "d27bf4ee78400cc25c366c2780c8b881a14484275b69cc3c8608d1080a875445"
 "checksum ryu 0.2.7 (registry+https://github.com/rust-lang/crates.io-index)" = "eb9e9b8cde282a9fe6a42dd4681319bfb63f121b8a8ee9439c6f4107e58a46f7"
 "checksum serde 1.0.83 (registry+https://github.com/rust-lang/crates.io-index)" = "157e12af46859e968da75dea9845530e13d03bcab2009a41b9b7bb3cf4eb3ec2"
 "checksum serde_json 1.0.33 (registry+https://github.com/rust-lang/crates.io-index)" = "c37ccd6be3ed1fdf419ee848f7c758eb31b054d7cd3ae3600e3bae0adf569811"
