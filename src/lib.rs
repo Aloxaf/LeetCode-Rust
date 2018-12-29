@@ -57,3 +57,7 @@ pub mod same_tree;
 pub mod symmetric_tree;
 pub mod powx_n;
 pub mod min_stack;
+pub mod add_and_search_word_data_structure_design;
+pub mod implement_queue_using_stacks;
+pub mod implement_stack_using_queues;
+pub mod design_hashmap;
