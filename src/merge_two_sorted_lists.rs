@@ -11,18 +11,21 @@ impl Solution {
         let mut cur = &mut dummy;
 
         let (mut l1, mut l2) = (&mut l1, &mut l2);
+        // 想试试不新建节点来完成
         while let (Some(n1), Some(n2)) = (l1.as_ref(), l2.as_ref()) {
             let (v1, v2) = (n1.val, n2.val);
-            let x = if v1 < v2 {
-                l1 = &mut l1.as_mut().unwrap().next;
-                v1
+            if v1 < v2 {
+                mem::swap(&mut cur.next, l1);
+                mem::swap(&mut cur.next.as_mut().unwrap().next, &mut l1);
+                // 这个地方我原本采用是下面这种写法, 然而被 borrow checker 无情驳回
+                // 请教了 @iovxw 大佬才得知
+                // l1 是对 cur.next.next 的可变借用, 循环末尾 cur 会被更新为 cur.next 的可变借用
+                // 由于这两个变量都会被使用, 于是就冲突了
+                // l1 = &mut cur.next.as_mut().unwrap().next;
             } else {
-                l2 = &mut l2.as_mut().unwrap().next;
-                v2
-            };
-            // 这个地方我本来试图用 mem::swap 避免新建节点, 然而未能成功战胜 borror checker,
-            // 如果有谁实现了还望不啬赐教
-            cur.next = Some(Box::new(ListNode::new(x)));
+                mem::swap(&mut cur.next, l2);
+                mem::swap(&mut cur.next.as_mut().unwrap().next, &mut l2);
+            }
             cur = cur.next.as_mut().unwrap();
         }
 
