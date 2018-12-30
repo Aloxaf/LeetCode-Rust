@@ -63,3 +63,6 @@ pub mod implement_stack_using_queues;
 pub mod design_hashmap;
 pub mod basic_calculator_ii;
 pub mod reverse_string;
+pub mod self_dividing_numbers;
+pub mod permutations;
+pub mod find_first_and_last_position_of_element_in_sorted_array;
