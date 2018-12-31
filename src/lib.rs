@@ -1,7 +1,8 @@
 #![feature(test)]
 #![feature(proc_macro_hygiene)]
 
-pub use leetcode_prelude::*;
+// 不用 *, 否则智能提示会出现奇奇怪怪的问题
+pub use leetcode_prelude::{linkedlist, btree, leetcode_test, vec_string, ListNode, TreeNode};
 
 pub mod two_sum;
 pub mod add_two_numbers;
@@ -66,3 +67,6 @@ pub mod reverse_string;
 pub mod self_dividing_numbers;
 pub mod permutations;
 pub mod find_first_and_last_position_of_element_in_sorted_array;
+pub mod merge_k_sorted_lists;
+pub mod swap_nodes_in_pairs;
+pub mod reverse_nodes_in_k_group;
