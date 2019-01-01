@@ -70,3 +70,4 @@ pub mod find_first_and_last_position_of_element_in_sorted_array;
 pub mod merge_k_sorted_lists;
 pub mod swap_nodes_in_pairs;
 pub mod reverse_nodes_in_k_group;
+pub mod rotate_list;
