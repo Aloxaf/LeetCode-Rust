@@ -1,20 +1,7 @@
-use crate::ListNode;
-
+use std::cmp::Reverse;
+use std::collections::BinaryHeap;
 use std::mem;
 
-//#[derive(PartialEq, Eq, Debug)]
-//pub struct ListNode {
-//    pub val: i32,
-//    pub next: Option<Box<ListNode>>,
-//}
-//
-//impl ListNode {
-//    #[inline]
-//    pub fn new(val: i32) -> Self {
-//        ListNode { next: None, val }
-//    }
-//}
-//
 //这道题提交的时候要提交下面的代码, 因为 LeetCode 的 ListNode 并没有自动 derive Ord + PartialOrd
 //use std::cmp::Ordering;
 //impl Ord for ListNode {
@@ -25,15 +12,16 @@ use std::mem;
 //
 //impl PartialOrd for ListNode {
 //    fn partial_cmp(&self, other: &ListNode) -> Option<Ordering> {
-//        Some(self.cmp(other))
+//        Some(self.val.cmp(&other.val))
 //    }
 //}
 
 impl Solution {
     /// 基本思路, 存 Vec 里排序
     /// 本来准备用优先队列, 想了想感觉也没简单多少?
+    /// 后来我还是用了优先队列, 因为发现用 std::cmp::Reverse 可以方便地逆转大小关系
     pub fn merge_k_lists(mut lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
-        let mut nodes = vec![];
+        let mut nodes = BinaryHeap::new();
 
         for head in lists.iter_mut() {
             let head = head;
@@ -44,16 +32,15 @@ impl Solution {
                 // 然后, 将 head 更新为 tmp.next 指向的节点
                 mem::swap(head, &mut tmp.as_mut().unwrap().next);
                 // 最后, 将这个独立的节点压入 nodes
-                nodes.push(tmp);
+                nodes.push(Reverse(tmp));
             }
         }
-        nodes.sort_unstable();
 
         let mut dummy = Box::new(ListNode::new(0));
         let mut cur = &mut dummy;
 
-        for node in nodes {
-            cur.next = node;
+        while let Some(node) = nodes.pop() {
+            cur.next = node.0;
             cur = cur.next.as_mut().unwrap();
         }
 
@@ -61,12 +48,33 @@ impl Solution {
     }
 }
 
+use crate::ListNode;
 pub struct Solution;
 
 #[cfg(test)]
 mod tests {
-    use super::Solution;
     use crate::linkedlist;
+    use super::{Solution};
+
+//    macro_rules! linkedlist {
+//        () => {
+//            None
+//        };
+//        ($($e:expr), *) => {
+//            {
+//                let mut head = Box::new(ListNode::new(0));
+//                let mut ref_head = &mut head;
+//
+//                $(
+//                ref_head.next = Some(Box::new(ListNode::new($e)));
+//                ref_head = ref_head.next.as_mut().unwrap();
+//                )*
+//
+//                let _ = ref_head; // 避免 `unused_assignments`
+//                head.next
+//            }
+//        };
+//    }
 
     #[test]
     fn test() {
