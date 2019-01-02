@@ -25,7 +25,8 @@ impl Solution {
                 cur = &cur.as_ref().unwrap().next;
             }
 
-            // TODO: 能干掉 unsafe吗
+            // 问: 能干掉 unsafe 吗
+            // 答: 不能
             unsafe {
                 let cur = cur as *const _ as *mut Option<Box<ListNode>>;
                 let tail = tail as *const _ as *mut Option<Box<ListNode>>;
@@ -33,6 +34,39 @@ impl Solution {
                 std::ptr::replace(tail, head);
                 mid
             }
+        } else {
+            head
+        }
+    }
+
+    pub fn rotate_right_safe(mut head: Option<Box<ListNode>>, mut k: i32) -> Option<Box<ListNode>> {
+        if head.is_none() {
+            return head;
+        }
+        let mut cur = &mut head;
+
+        let mut length = 0;
+        while let Some(next) = cur {
+            cur = &mut next.next;
+            length += 1;
+        }
+
+        k %= length;
+        if k != 0 {
+            // 找到新的头结点
+            cur = &mut head;
+            for _ in 0..(length - k) {
+                cur = &mut cur.as_mut().unwrap().next;
+            }
+            let mut mid = std::mem::replace(cur, None);
+            // 再次找到尾节点
+            let mut tail = &mut mid;
+            while let Some(next) = tail {
+                tail = &mut next.next;
+            }
+            // 首尾相连
+            std::mem::replace(tail, head);
+            mid
         } else {
             head
         }
@@ -63,5 +97,41 @@ mod tests {
             Solution::rotate_right(linkedlist![], 0),
             linkedlist![]
         );
+    }
+
+    #[test]
+    fn test_safe() {
+        assert_eq!(
+            Solution::rotate_right_safe(linkedlist![1, 2, 3, 4, 5], 2),
+            linkedlist![4, 5, 1, 2, 3]
+        );
+
+        assert_eq!(
+            Solution::rotate_right_safe(linkedlist![0, 1, 2], 4),
+            linkedlist![2, 0, 1]
+        );
+
+        assert_eq!(
+            Solution::rotate_right_safe(linkedlist![], 0),
+            linkedlist![]
+        );
+    }
+}
+
+#[cfg(test)]
+mod bench {
+    extern crate test;
+    use crate::linkedlist;
+    use super::Solution;
+    use self::test::Bencher;
+
+    #[bench]
+    fn _unsafe(b: &mut Bencher) {
+        b.iter(|| Solution::rotate_right(linkedlist![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
+    }
+
+    #[bench]
+    fn safe(b: &mut Bencher) {
+        b.iter(||  Solution::rotate_right_safe(linkedlist![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
     }
 }

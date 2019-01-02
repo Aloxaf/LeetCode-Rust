@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 leetcode_prelude = "^0.1"
+rand = "0.6"
