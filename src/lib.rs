@@ -74,3 +74,6 @@ pub mod rotate_list;
 pub mod kth_largest_element_in_an_array;
 pub mod binary_tree_level_order_traversal;
 pub mod binary_tree_level_order_traversal_ii;
+pub mod zigzag_conversion;
+pub mod flatten_binary_tree_to_linked_list;
+pub mod remove_linked_list_elements;
