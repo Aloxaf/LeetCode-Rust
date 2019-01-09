@@ -79,3 +79,4 @@ pub mod flatten_binary_tree_to_linked_list;
 pub mod remove_linked_list_elements;
 pub mod unique_email_addresses;
 pub mod sort_array_by_parity;
+pub mod wildcard_matching;
