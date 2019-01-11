@@ -80,3 +80,6 @@ pub mod remove_linked_list_elements;
 pub mod unique_email_addresses;
 pub mod sort_array_by_parity;
 pub mod wildcard_matching;
+pub mod single_number;
+pub mod add_strings;
+pub mod ugly_number;
