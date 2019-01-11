@@ -2,9 +2,8 @@ impl Solution {
     // 使用泛型以同时接受 String, &str. 测试的时候可以少写一点代码!
     // Yu 的神奇算法, 抓住了 '*' 再多都只需要考虑一个这一点
     // http://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html
-    pub fn is_match<S: Into<String>>(s: S, p: S) -> bool {
-        let (s, p) = (s.into(), p.into());
-        let (s, p) = (s.as_bytes(), p.as_bytes());
+    pub fn is_match<S: AsRef<str>>(s: S, p: S) -> bool {
+        let (s, p) = (s.as_ref().as_bytes(), p.as_ref().as_bytes());
         let (mut ss, mut pp, mut m, mut star) = (0, 0, 0, None);
         while ss < s.len() {
             // pattern 为 '?' 或者 str == pattern, 继续比较下一个
