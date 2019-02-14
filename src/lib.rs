@@ -2,7 +2,7 @@
 #![feature(proc_macro_hygiene)]
 
 // 不用 *, 否则智能提示会出现奇奇怪怪的问题
-pub use leetcode_prelude::{linkedlist, btree, leetcode_test, vec_string, ListNode, TreeNode};
+pub use leetcode_prelude::{linkedlist, btree, leetcode_test, vec_string, ListNode, TreeNode, assert_eq_sorted};
 
 pub mod two_sum;
 pub mod add_two_numbers;
@@ -83,3 +83,5 @@ pub mod wildcard_matching;
 pub mod single_number;
 pub mod add_strings;
 pub mod ugly_number;
+pub mod majority_element;
+pub mod majority_element_ii;
