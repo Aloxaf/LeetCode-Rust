@@ -85,3 +85,5 @@ pub mod add_strings;
 pub mod ugly_number;
 pub mod majority_element;
 pub mod majority_element_ii;
+pub mod two_sum_ii_input_array_is_sorted;
+pub mod subsets;
