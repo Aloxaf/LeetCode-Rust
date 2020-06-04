@@ -12,7 +12,7 @@ impl Solution {
                 }
                 // 本来又上了 unsafe, 在 tg 群里问了下 @Xidorn Quan 大佬, 提示用 std::mem::replace, 妙啊!
                 let next_next = std::mem::replace(&mut next.next, None);
-                std::mem::replace(&mut now.next, next_next);
+                let _ = std::mem::replace(&mut now.next, next_next);
             }
             p = &mut now.next;
         }

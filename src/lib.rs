@@ -88,3 +88,5 @@ pub mod majority_element_ii;
 pub mod two_sum_ii_input_array_is_sorted;
 pub mod subsets;
 pub mod add_digits;
+pub mod reverse_linked_list;
+pub mod alphabet_board_path;

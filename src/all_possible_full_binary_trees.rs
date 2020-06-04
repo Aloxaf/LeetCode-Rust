@@ -8,7 +8,7 @@ impl Solution {
     pub fn all_possible_fbt(n: i32) -> Vec<Option<Rc<RefCell<TreeNode>>>> {
         let mut ret = vec![];
         if n % 2 == 0 {
-            ;
+
         } else if n == 1 {
             ret.push(Some(Rc::new(RefCell::new(TreeNode::new(0)))));
         } else {

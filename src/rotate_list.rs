@@ -65,7 +65,7 @@ impl Solution {
                 tail = &mut next.next;
             }
             // 首尾相连
-            std::mem::replace(tail, head);
+            let _ = std::mem::replace(tail, head);
             mid
         } else {
             head

@@ -8,7 +8,7 @@ impl Solution {
             vec![vec![nums[0]]]
         } else {
             nums.iter().map(|i| {
-                let arg = nums.iter().filter_map(|n| if n != i { Some(*n) } else { None }).collect();;
+                let arg = nums.iter().filter_map(|n| if n != i { Some(*n) } else { None }).collect();
                 let mut sub = Self::permute(arg);
                 sub.iter_mut().for_each(|v| v.push(*i));
                 sub
