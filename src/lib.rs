@@ -91,3 +91,4 @@ pub mod add_digits;
 pub mod reverse_linked_list;
 pub mod alphabet_board_path;
 pub mod product_of_array_except_self;
+pub mod spiral_matrix;
