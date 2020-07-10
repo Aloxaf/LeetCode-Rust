@@ -92,3 +92,6 @@ pub mod reverse_linked_list;
 pub mod alphabet_board_path;
 pub mod product_of_array_except_self;
 pub mod spiral_matrix;
+pub mod create_target_array_in_the_given_order;
+pub mod asteroid_collision;
+
